@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.example.queryproject.team.QTeam.team;
+
 @RestController
 @RequestMapping("/member")
 @RequiredArgsConstructor
@@ -28,5 +30,9 @@ public class MemberController {
     @GetMapping("/find-age/{age}")
     public List<ResponseMember> getMemberAgeController(@PathVariable("age") Integer age) {
         return memberService.findAllByAge(age);
+    }
+    @GetMapping("/find-team-name/{teamName}")
+    public List<ResponseMember> getMembersTeamNameController(@PathVariable("teamName") String teamName) {
+        return memberService.findAllByTeamName(teamName);
     }
 }

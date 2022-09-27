@@ -25,4 +25,8 @@ public class MemberService {
     public List<ResponseMember> findAllByAge(Integer age) {
         return memberQueryRepository.findAllByAge(age).stream().map(ResponseMember::new).collect(Collectors.toList());
     }
+
+    public List<ResponseMember> findAllByTeamName(String teamName) {
+        return memberQueryRepository.findAllByTeamName(teamName).stream().map(ResponseMember::new).collect(Collectors.toList());
+    }
 }

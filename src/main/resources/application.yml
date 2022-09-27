@@ -9,8 +9,11 @@ spring:
     open-in-view: false
     hibernate:
       ddl-auto: create
-    show-sql: true
     defer-datasource-initialization: true
+    properties:
+      hibernate:
+        show-sql: true
+        format-sql: true
   sql.init.mode: always
 logging.level:
   org.hibernate.SQL: debug

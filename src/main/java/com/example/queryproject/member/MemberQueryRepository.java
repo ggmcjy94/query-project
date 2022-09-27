@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 import static com.example.queryproject.member.QMember.member;
+import static com.example.queryproject.team.QTeam.team;
 
 @Repository
 public class MemberQueryRepository extends QuerydslRepositorySupport {
@@ -25,6 +26,8 @@ public class MemberQueryRepository extends QuerydslRepositorySupport {
     public List<Member> findAllByUserName(String userName) {
         return queryFactory
                 .selectFrom(member)
+                .join(member.team, team)
+                .fetchJoin()
                 .where(member.username.eq(userName))
                 .fetch();
     }
@@ -32,7 +35,18 @@ public class MemberQueryRepository extends QuerydslRepositorySupport {
     public List<Member> findAllByAge(Integer age) {
         return queryFactory
                 .selectFrom(member)
+                .join(member.team, team)
+                .fetchJoin()
                 .where(member.age.eq(age))
+                .fetch();
+    }
+
+    public List<Member> findAllByTeamName(String teamName) {
+        return queryFactory
+                .selectFrom(member)
+                .join(member.team, team)
+                .fetchJoin()
+                .where(member.team.name.eq(teamName))
                 .fetch();
     }
 }
