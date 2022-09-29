@@ -7,6 +7,7 @@ insert into team (name) values ('도르트문트');
 insert into team (name) values ('아스날');
 insert into team (name) values ('토트넘');
 insert into team (name) values ('파리생제르망');
+insert into team (name) values ('에버턴');
 
 
 insert into member (username, age, team_id) values ('lhs', 29, 1);
