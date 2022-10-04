@@ -19,4 +19,8 @@ public class TeamService {
     public List<ResponseTeam> findAll() {
         return teamQueryRepository.findAll().stream().map(ResponseTeam::new).collect(Collectors.toList());
     }
+
+    public ResponseTeam findById(Long id) {
+        return new ResponseTeam(teamQueryRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id 가 존재하지 않습니다.")));
+    }
 }
